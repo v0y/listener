@@ -3,7 +3,7 @@ from pprint import pprint
 import falcon
 
 
-class Notifications(object):
+class Listener(object):
     def on_post(self, req, resp):
         body = req.stream.read()
         print('*' * 40)
@@ -16,6 +16,6 @@ class Notifications(object):
 
 app = falcon.API()
 
-notifications = Notifications()
+listener = Listener()
 
-app.add_route('/', notifications)
+app.add_route('/', listener)
