@@ -5,6 +5,9 @@ import falcon
 
 
 class Listener(object):
+    def on_get(self, req, resp):
+        resp.body = '(ﾉ´ヮ´)ﾉ*:･ﾟ✧'
+
     def on_post(self, req, resp):
         body = req.stream.read()
         print('*' * 40)
