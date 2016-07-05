@@ -6,6 +6,10 @@ Run
 
     gunicorn -b 0.0.0.0:8811 --reload app:app
 
+or
+
+    python app/__init__.py
+
 
 Test
 ----

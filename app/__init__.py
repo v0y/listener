@@ -2,6 +2,7 @@ from ast import literal_eval
 from pprint import pprint
 
 import falcon
+from wsgiref import simple_server
 
 
 class Listener(object):
@@ -31,3 +32,16 @@ app = falcon.API()
 listener = Listener()
 
 app.add_route('/', listener)
+
+
+if __name__ == '__main__':
+    ip = '127.0.0.1'
+    port = 8000
+    while port < 8999:
+        try:
+            httpd = simple_server.make_server(ip, port, app)
+        except OSError:
+            port += 1
+        else:
+            print('serving on {}:{}'.format(ip, port))
+            httpd.serve_forever()
